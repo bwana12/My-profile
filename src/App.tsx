@@ -77,19 +77,35 @@ export default function App() {
     scene.add(profileGroup);
 
     const textureLoader = new THREE.TextureLoader();
+    const githubAvatarUrl = 'https://avatars.githubusercontent.com/u/199301772?v=4';
     const photoUrl = '/profile.jpg';
-    const photoTexture = textureLoader.load(photoUrl, undefined, undefined, () => {
-      // Fallback to gold orb if texture fails
-      const orbGeo = new THREE.SphereGeometry(2.5, 32, 32);
-      const orbMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0xd4af37, emissiveIntensity: 0.5 });
-      const orb = new THREE.Mesh(orbGeo, orbMat);
-      profileGroup.add(orb);
-    });
-
-    const photoGeo = new THREE.CircleGeometry(3, 64);
-    const photoMat = new THREE.MeshBasicMaterial({ map: photoTexture, side: THREE.DoubleSide });
-    const photoMesh = new THREE.Mesh(photoGeo, photoMat);
-    profileGroup.add(photoMesh);
+    
+    const photoTexture = textureLoader.load(photoUrl, 
+      // Success
+      (texture) => {
+        const photoGeo = new THREE.CircleGeometry(3, 64);
+        const photoMat = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+        const photoMesh = new THREE.Mesh(photoGeo, photoMat);
+        profileGroup.add(photoMesh);
+      },
+      // Progress
+      undefined,
+      // Error - Fallback to GitHub Avatar
+      () => {
+        textureLoader.load(githubAvatarUrl, (githubTexture) => {
+          const photoGeo = new THREE.CircleGeometry(3, 64);
+          const photoMat = new THREE.MeshBasicMaterial({ map: githubTexture, side: THREE.DoubleSide });
+          const photoMesh = new THREE.Mesh(photoGeo, photoMat);
+          profileGroup.add(photoMesh);
+        }, undefined, () => {
+          // Final fallback to gold orb
+          const orbGeo = new THREE.SphereGeometry(2.5, 32, 32);
+          const orbMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0xd4af37, emissiveIntensity: 0.5 });
+          const orb = new THREE.Mesh(orbGeo, orbMat);
+          profileGroup.add(orb);
+        });
+      }
+    );
 
     // Pulsing ring
     const ringGeo = new THREE.RingGeometry(3.2, 3.4, 64);
