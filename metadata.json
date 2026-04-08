@@ -1,0 +1,5 @@
+{
+  "name": "DEVSPACE — Cinematic 3D Portfolio",
+  "description": "A high-end, immersive 3D portfolio experience built with Three.js and GSAP, featuring interactive environments and cinematic transitions.",
+  "requestFramePermissions": []
+}
