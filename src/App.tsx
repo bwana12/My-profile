@@ -116,11 +116,11 @@ export default function App() {
 
     // --- PLANETS ---
     const planetsData = [
-      { name: 'About', color: 0xd4af37, radius: 1.5, orbit: 12, speed: 0.2, section: 'about', ring: false },
-      { name: 'Skills', color: 0x88ccff, radius: 1.2, orbit: 18, speed: 0.15, section: 'skills', ring: true },
-      { name: 'Projects', color: 0xff8844, radius: 1.8, orbit: 25, speed: 0.25, section: 'projects', ring: false },
-      { name: 'Contact', color: 0xff4444, radius: 1.0, orbit: 9, speed: 0.1, section: 'contact', ring: false },
-      { name: 'Exit', color: 0x444444, radius: 0.8, orbit: 30, speed: 0.08, section: 'exit', ring: false },
+      { name: 'About', color: 0xd4af37, radius: 1.5, orbit: 10, speed: 0.4, section: 'about', ring: false },
+      { name: 'Skills', color: 0x88ccff, radius: 1.2, orbit: 14, speed: 0.3, section: 'skills', ring: true },
+      { name: 'Projects', color: 0xff8844, radius: 1.8, orbit: 18, speed: 0.45, section: 'projects', ring: false },
+      { name: 'Contact', color: 0xff4444, radius: 1.0, orbit: 7, speed: 0.35, section: 'contact', ring: false },
+      { name: 'Exit', color: 0x444444, radius: 0.8, orbit: 22, speed: 0.25, section: 'exit', ring: false },
     ];
 
     planetsData.forEach((data) => {
@@ -440,7 +440,7 @@ export default function App() {
             <span className="line"><span className="word" style={{ opacity: 1, transform: 'translateY(0)' }}>BWANA</span></span>
             <span className="line"><span className="word" style={{ opacity: 1, transform: 'translateY(0)' }}>MWASE</span></span>
           </div>
-          <p className="intro-sub" style={{ opacity: 1, transform: 'translateY(0)' }}>Full Stack Developer · Creative Technologist</p>
+          <p className="intro-sub" style={{ opacity: 1, transform: 'translateY(0)' }}>Full Stack Developer · Creative Technology</p>
           <p className="intro-sub" style={{ opacity: 0.6, fontSize: '0.6rem', marginTop: '2rem' }}>Click a planet to explore</p>
         </div>
       )}
