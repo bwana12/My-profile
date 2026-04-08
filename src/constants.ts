@@ -39,7 +39,7 @@ export const CONTENT = {
     <h2 class="panel-title">Get In <span>Touch</span></h2>
     <div class="panel-body">
       <p>Have a project in mind? Let's build something extraordinary together.</p>
-      <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+      <form class="contact-form" action="https://formspree.io/f/xeepddle" method="POST">
         <input class="form-field" type="text" name="name" placeholder="Your Name" required>
         <input class="form-field" type="email" name="email" placeholder="Email Address" required>
         <textarea class="form-field" name="message" rows="4" placeholder="Your Message" required></textarea>

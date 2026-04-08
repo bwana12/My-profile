@@ -194,8 +194,16 @@ export default function App() {
         if (!p) return;
         const data = p.userData;
         const angle = elapsed * data.speed + (data.orbit * 10); // offset based on orbit
-        p.position.x = Math.cos(angle) * data.orbit;
-        p.position.z = Math.sin(angle) * data.orbit;
+        
+        if (data.section === 'exit') {
+          // Keep Exit planet in front (z > 0)
+          p.position.x = Math.cos(angle) * data.orbit;
+          p.position.z = Math.abs(Math.sin(angle)) * (data.orbit * 0.5) + 5; 
+        } else {
+          p.position.x = Math.cos(angle) * data.orbit;
+          p.position.z = Math.sin(angle) * data.orbit;
+        }
+        
         p.rotation.y += delta * 0.5;
       });
 
