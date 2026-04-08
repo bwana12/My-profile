@@ -431,13 +431,24 @@ export default function App() {
       )}
 
       {/* HUD */}
-      <nav id="hud" style={{ opacity: isLoaded ? 1 : 0 }}>
+      <nav id="hud" style={{ 
+        opacity: isLoaded ? 1 : 0, 
+        pointerEvents: isLoaded ? 'all' : 'none',
+        transition: 'opacity 0.8s ease-out'
+      }}>
         <div className="hud-logo">Bwana<span>Mwase</span></div>
         <ul className="hud-nav">
           <li><a href="#" onClick={(e) => { e.preventDefault(); openPanel('about'); }}>About</a></li>
           <li><a href="#" onClick={(e) => { e.preventDefault(); openPanel('skills'); }}>Skills</a></li>
           <li><a href="#" onClick={(e) => { e.preventDefault(); openPanel('projects'); }}>Projects</a></li>
           <li><a href="#" onClick={(e) => { e.preventDefault(); openPanel('contact'); }}>Contact</a></li>
+          <li><a href="#" onClick={(e) => { 
+            e.preventDefault(); 
+            if (cameraRef.current) {
+              gsap.to(cameraRef.current.position, { x: 0, y: 5, z: 35, duration: 1.8, ease: 'power3.inOut' });
+              gsap.to(cameraRef.current.rotation, { x: 0, y: 0, z: 0, duration: 1.8 });
+            }
+          }}>Exit</a></li>
         </ul>
       </nav>
 
